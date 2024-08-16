@@ -14,7 +14,6 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "Times New Roman, Times, serif",
-    // fontFamily: "Monsieur La Doulaise, cursive",
 
     h1: {
       fontFamily: "Times New Roman, Times, serif",
