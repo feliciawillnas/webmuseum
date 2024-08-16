@@ -3,7 +3,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { About } from "./pages/About";
 import { Home } from "./pages/Home";
 import { Navigation } from "./pages/Navigation";
-import theme from "./theme";
+import "./styles/global.css";
+import theme from "./styles/theme";
 
 function App() {
   return (

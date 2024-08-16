@@ -13,13 +13,22 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Roboto, Arial, sans-serif",
+    fontFamily: "Times New Roman, Times, serif",
+    // fontFamily: "Monsieur La Doulaise, cursive",
+
     h1: {
-      fontSize: "2.5rem",
+      fontFamily: "Times New Roman, Times, serif",
+      fontSize: "5rem",
       fontWeight: 500,
     },
     h2: {
+      fontFamily: "Helvetica Neue, Arial, sans-serif",
       fontSize: "2rem",
+      fontWeight: 500,
+    },
+    h3: {
+      fontFamily: "Monsieur La Doulaise, cursive",
+      fontSize: "1.75rem",
       fontWeight: 500,
     },
   },
