@@ -11,13 +11,13 @@ export function Navigation() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/cart">Cart</Link>
+          </li>
+          <li>
+            <Link to="/information">Information</Link>
           </li>
           <li>
             <Link to="/shop">Shop</Link>
-          </li>
-          <li>
-            <Link to="/cart">Cart</Link>
           </li>
         </ul>
       </nav>
