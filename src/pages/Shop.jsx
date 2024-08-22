@@ -1,42 +1,26 @@
-import { Grid } from "@mui/material";
 import React from "react";
+import Item from "../components/Item";
 
 export function Shop() {
+  const items = [
+    {
+      imageSrc: "../assets/tree.jpeg",
+      title: "First Item",
+      description: "This is the description for the first item.",
+    },
+  ];
   return (
     <>
-      {/* <img src="../assets/grey.jpg" alt="" /> */}
-      <img src="" alt="" />
-      <div>Hej Shop</div>
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
-          {/* <Item
-            img="../assets/grey.jpg"
-            title="Title 1"
-            description="Description for item 1"
-          /> */}
-        </Grid>
-        {/* <Grid item xs={4}>
+      <div>
+        {items.map((item, index) => (
           <Item
-            img="../assets/grey.jpg"
-            title="Title 2"
-            description="Description for item 2"
+            key={index}
+            imageSrc={item.imageSrc}
+            title={item.title}
+            description={item.description}
           />
-        </Grid> */}
-        {/* <Grid item xs={4}>
-          <Item
-            img="../assets/grey.jpg"
-            title="Title 3"
-            description="Description for item 3"
-          />
-        </Grid>
-        <Grid item xs={8}>
-          <Item
-            img="https://example.com/image1.jpg"
-            title="Title 4"
-            description="Description for item 4"
-          />
-        </Grid> */}
-      </Grid>
+        ))}
+      </div>
     </>
   );
 }

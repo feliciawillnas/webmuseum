@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const Item = ({ image, title, description }) => {
+const Item = ({ imageSrc, title, description }) => {
   return (
     <>
       <ItemWrapper>
-        <img src={image} alt={title} />
+        <Image src={imageSrc} alt={title} />
         <h2>{title}</h2>
         <p>{description}</p>
       </ItemWrapper>
@@ -14,6 +14,11 @@ const Item = ({ image, title, description }) => {
 };
 
 const ItemWrapper = styled.div`
+  border: 1px solid #ccc;
+  height: 100px;
+`;
+
+const Image = styled.img`
   border: 1px solid #ccc;
   height: 100px;
 `;
