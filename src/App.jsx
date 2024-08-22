@@ -1,7 +1,6 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Header } from "./components/Header";
-import { Navigation } from "./components/Navigation";
 import { Cart } from "./pages/Cart";
 import { Home } from "./pages/Home";
 import { Information } from "./pages/Information";
@@ -15,7 +14,6 @@ function App() {
       <ThemeProvider theme={theme}>
         <Router>
           <Header />
-          <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/information" element={<Information />} />
