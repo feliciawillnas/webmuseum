@@ -1,13 +1,19 @@
-import { Typography } from "@mui/material";
 import React from "react";
+import styled from "styled-components";
+import { useTheme } from "@mui/material/styles";
 
 export function Home() {
+  const theme = useTheme();
+
   return (
     <>
-      <div>Home</div>
-      <Typography variant="h1">This is h1 font</Typography>
-      <Typography variant="h2">This is h2 font</Typography>
-      <Typography variant="h3">This is h3 font</Typography>
+      <Main theme={theme}>
+        <div>Home</div>
+      </Main>
     </>
   );
 }
+
+const Main = styled.div`
+  background-color: ${({ theme }) => theme.palette.background.primary};
+`;

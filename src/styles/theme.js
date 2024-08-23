@@ -15,6 +15,7 @@ const theme = createTheme({
     text: {
       primary: "#0D0D0D",
       secondary: "#747474",
+      decorated: "#F6F6F6",
     },
   },
 
@@ -38,8 +39,8 @@ const theme = createTheme({
     // },
     title: {
       fontFamily: "Noto Serif, serif",
-      fontSize: "3.5rem",
-      fontWeight: 400,
+      fontSize: "4.2rem",
+      fontWeight: 350,
     },
     p: {
       fontFamily: "Helvetica Neue, Arial, sans-serif",

@@ -29,16 +29,21 @@ export function Navigation() {
 const LinkWrapper = styled.nav`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  line-height: 1;
+  padding: 0.8rem;
+  line-height: 0.85;
   list-style: none;
 
   a {
+    transition: color 0.4s ease;
     text-decoration: none;
 
     font-family: ${({ theme }) => theme.typography.title.fontFamily};
     font-size: ${({ theme }) => theme.typography.title.fontSize};
     font-weight: ${({ theme }) => theme.typography.title.fontWeight};
     color: ${({ theme }) => theme.palette.text.secondary};
+
+    &:hover {
+      color: ${({ theme }) => theme.palette.text.primary};
+    }
   }
 `;
