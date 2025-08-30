@@ -1,7 +1,6 @@
-import React from "react";
-import { Navigation } from "./Navigation";
-import { Logo } from "./Logo";
 import styled from "styled-components";
+import { Logo } from "./Logo";
+import { Navigation } from "./Navigation";
 
 export function Header() {
   return (
@@ -17,5 +16,7 @@ export function Header() {
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  position: fixed;
+  width: 100%;
+  padding: 1rem;
 `;
