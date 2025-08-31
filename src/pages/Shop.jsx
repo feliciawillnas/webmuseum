@@ -1,47 +1,54 @@
 import styled from "styled-components";
+import first from "../assets/first.jpg";
+import fourth from "../assets/fourth.jpg";
+import second from "../assets/second.jpg";
+import third from "../assets/third.jpg";
+
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export function Shop() {
+  const ParallaxImage = ({ src, speed = 0.3 }) => {
+    const { scrollY } = useScroll();
+
+    const y = useTransform(scrollY, [0, 1000], [0, speed * 1000]);
+
+    return <motion.img src={src} style={{ y }} />;
+  };
+
   return (
     <>
       <Main>
-        <div>
-          <BlackDiv></BlackDiv>
-          <WhiteDiv></WhiteDiv>
-        </div>
-        <div>
-          <PinkDiv></PinkDiv>
-          <GrayDiv></GrayDiv>
-        </div>
+        <ItemWrapper>
+          <ParallaxImage src={first} alt="" speed={0.3} />
+        </ItemWrapper>
+        <ItemWrapper>
+          <ParallaxImage src={second} alt="" speed={0.3} />
+        </ItemWrapper>
+        <ItemWrapper>
+          <ParallaxImage src={third} alt="" speed={0.3} />
+        </ItemWrapper>
+        <ItemWrapper>
+          <ParallaxImage src={fourth} alt="" speed={0.3} />
+        </ItemWrapper>
       </Main>
     </>
   );
 }
 
 const Main = styled.div`
-  div {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+`;
+
+const ItemWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+
+  img {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
   }
-`;
-
-const BlackDiv = styled.div`
-  background-color: black;
-  height: 150px;
-`;
-
-const WhiteDiv = styled.div`
-  background-color: white;
-  height: 150px;
-`;
-
-const PinkDiv = styled.div`
-  background-color: pink;
-  height: 150px;
-`;
-
-const GrayDiv = styled.div`
-  background-color: gray;
-  height: 150px;
 `;
