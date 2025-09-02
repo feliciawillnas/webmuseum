@@ -19,4 +19,5 @@ const HeaderWrapper = styled.div`
   position: fixed;
   width: 100%;
   padding: 1rem;
+  z-index: 1000;
 `;
