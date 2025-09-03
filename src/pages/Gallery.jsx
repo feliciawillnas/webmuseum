@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import styled from "styled-components";
 
-export function Gallery() {
+export function Gallery({ artworks }) {
   const items = [
     {
       imageSrc: "../assets/tree.jpeg",
@@ -59,11 +59,11 @@ export function Gallery() {
 
   return (
     <GalleryDiv ref={container}>
-      <Column items={items} y={y} />
-      <Column items={items} y={y2} />
-      <Column items={items} y={y3} />
-      <Column items={items} y={y4} />
-      <Column items={items} y={y5} />
+      <Column items={artworks} y={y} />
+      <Column items={artworks} y={y2} />
+      <Column items={artworks} y={y3} />
+      <Column items={artworks} y={y4} />
+      <Column items={artworks} y={y5} />
     </GalleryDiv>
   );
 }
@@ -71,9 +71,12 @@ export function Gallery() {
 const Column = ({ items, y = 0 }) => {
   return (
     <motion.div style={{ y }}>
-      {items.map((item, index) => (
-        <Item key={index}>
-          <img src={item.imageSrc} alt={item.title} />
+      {items.map((art) => (
+        <Item key={art.id}>
+          <img
+            src={`https://www.artic.edu/iiif/2/${art.image_id}/full/400,/0/default.jpg`}
+            alt={art.title}
+          />
         </Item>
       ))}
     </motion.div>

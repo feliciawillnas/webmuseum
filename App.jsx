@@ -1,7 +1,8 @@
 import Lenis from "lenis";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { fetchArtworks } from "./api";
 import { Header } from "./src/components/Header";
 import { Gallery } from "./src/pages/Gallery";
 import { Home } from "./src/pages/Home";
@@ -23,6 +24,16 @@ function App() {
     });
   }, []);
 
+  const [artworks, setArtworks] = useState([]);
+
+  useEffect(() => {
+    async function loadData() {
+      const data = await fetchArtworks();
+      setArtworks(data);
+    }
+    loadData();
+  }, []);
+
   return (
     <>
       <ThemeProvider theme={mainTheme}>
@@ -32,7 +43,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/information" element={<Information />} />
-            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery" element={<Gallery artworks={artworks} />} />
             <Route path="/shop" element={<Shop />} />
           </Routes>
         </Router>
