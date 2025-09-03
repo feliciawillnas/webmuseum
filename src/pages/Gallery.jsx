@@ -73,7 +73,9 @@ const Column = ({ items, y = 0 }) => {
     <motion.div style={{ y }}>
       {items.map((art) => (
         <Item key={art.id}>
-          <img
+          <motion.img
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9, rotate: 2 }}
             src={`https://www.artic.edu/iiif/2/${art.image_id}/full/400,/0/default.jpg`}
             alt={art.title}
           />
@@ -101,11 +103,9 @@ const GalleryDiv = styled.div`
 `;
 
 const Item = styled.div`
-  border-radius: 8px;
-
   img {
     width: 50%;
     height: auto;
-    border-radius: 20px;
+    border-radius: 2px;
   }
 `;
