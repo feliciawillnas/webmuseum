@@ -58,6 +58,7 @@ export function Gallery({ artworks }) {
   const y5 = useTransform(scrollY, (v) => v * 0.8);
 
   return (
+    // avoid repetition
     <GalleryDiv ref={container}>
       <Column items={artworks} y={y} />
       <Column items={artworks} y={y2} />
@@ -71,16 +72,20 @@ export function Gallery({ artworks }) {
 const Column = ({ items, y = 0 }) => {
   return (
     <motion.div style={{ y }}>
-      {items.map((art) => (
-        <Item key={art.id}>
-          <motion.img
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9, rotate: 2 }}
-            src={`https://www.artic.edu/iiif/2/${art.image_id}/full/400,/0/default.jpg`}
-            alt={art.title}
-          />
-        </Item>
-      ))}
+      {items.map(
+        (art) =>
+          art.is_public_domain &&
+          art.image_id && (
+            <Item key={art.id}>
+              <motion.img
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9, rotate: 2 }}
+                src={`https://www.artic.edu/iiif/2/${art.image_id}/full/400,/0/default.jpg`}
+                alt={art.title}
+              />
+            </Item>
+          )
+      )}
     </motion.div>
   );
 };
