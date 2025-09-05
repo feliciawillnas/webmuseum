@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export function Navigation() {
   const links = [
-    { to: "/", label: "Home" },
-    { to: "/gallery", label: "Gallery" },
-    { to: "/information", label: "Information" },
-    { to: "/shop", label: "Shop" },
+    { id: "home", label: "Home", path: "/" },
+    { id: "gallery", label: "Gallery", path: "/gallery" },
+    { id: "information", label: "Information", path: "/information" },
+    { id: "shop", label: "Shop", path: "/shop" },
   ];
 
   return (
@@ -14,8 +13,8 @@ export function Navigation() {
       <LinkWrapper>
         <ul>
           {links.map((link) => (
-            <li key={link.to}>
-              <Link to={link.to}>{link.label}</Link>
+            <li key={link.id}>
+              <a href={link.path}>{link.label}</a>
             </li>
           ))}
         </ul>
@@ -25,18 +24,18 @@ export function Navigation() {
 }
 
 const LinkWrapper = styled.nav`
-  display: flex;
-  flex-direction: column;
-  line-height: 0.85;
-
   ul {
     display: flex;
     flex-direction: column;
-    // Fixa så detta funkar
-    font-weight: 100;
+  }
+
+  li {
+    width: fit-content;
   }
 
   a {
+    font-family: "Codystar", sans-serif;
     color: ${({ theme }) => theme.title};
+    font-size: 4rem;
   }
 `;
