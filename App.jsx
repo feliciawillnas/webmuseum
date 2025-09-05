@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { Header } from "./src/components/Header";
 import backupArtworks from "./src/data/artworks/backupArtworks.json";
 import { Gallery } from "./src/pages/Gallery";
+import GalleryDetail from "./src/pages/GalleryDetail";
 import { Home } from "./src/pages/Home";
 import { Information } from "./src/pages/Information";
 import { Shop } from "./src/pages/Shop";
@@ -28,15 +29,7 @@ function App() {
   // Initialize state for artworks
   const [artworks, setArtworks] = useState([]);
 
-  // Fetch artworks from api
-  // async function loadFallbackArtworks() {
-  //   const res = await fetch("./src/data/allArtworks.jsonl");
-  //   const text = await res.text();
-  //   return text
-  //     .trim()
-  //     .split("\n")
-  //     .map((line) => JSON.parse(line));
-  // }
+  // import { fetchArtworks } from "./api";
 
   useEffect(() => {
     async function loadData() {
@@ -62,9 +55,13 @@ function App() {
         <Router>
           <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home artworks={artworks} />} />
             <Route path="/information" element={<Information />} />
             <Route path="/gallery" element={<Gallery artworks={artworks} />} />
+            <Route
+              path="/gallery/:id"
+              element={<GalleryDetail artworks={artworks} />}
+            />
             <Route path="/shop" element={<Shop />} />
           </Routes>
         </Router>

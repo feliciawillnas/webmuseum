@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export function Gallery({ artworks }) {
@@ -43,7 +44,7 @@ const Column = ({ items, y = 0 }) => {
       {items.map(
         (art) =>
           art.image_id && (
-            <Item key={art.id}>
+            <Item to={`/gallery/${art.id}`} key={art.id}>
               <motion.img
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9, rotate: 2 }}
@@ -74,7 +75,7 @@ const GalleryDiv = styled.div`
   }
 `;
 
-const Item = styled.div`
+const Item = styled(Link)`
   img {
     width: 50%;
     height: auto;

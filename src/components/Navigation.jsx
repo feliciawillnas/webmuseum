@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export function Navigation() {
@@ -14,7 +15,7 @@ export function Navigation() {
         <ul>
           {links.map((link) => (
             <li key={link.id}>
-              <a href={link.path}>{link.label}</a>
+              <Link to={link.path}>{link.label}</Link>
             </li>
           ))}
         </ul>
