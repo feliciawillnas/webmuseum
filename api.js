@@ -10,10 +10,11 @@ export async function fetchArtworks() {
 
     // Array of request results
     const requests = [];
+    const amountOfPages = 5;
 
-    // Fetch first 3 pages
-    for (let i = 1; i < 4; i++) {
-      requests.push(axios.get(`${api}?page=${i + 1}&limit=20`));
+    // Fetch first X pages
+    for (let i = 1; i < amountOfPages + 1; i++) {
+      requests.push(axios.get(`${api}?page=${i}&limit=20`));
     }
 
     const responses = await Promise.all(requests);

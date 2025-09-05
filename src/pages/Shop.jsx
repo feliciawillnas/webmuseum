@@ -19,6 +19,7 @@ export function Shop() {
     <Section ref={sectionRef}>
       <Main>
         <ItemWrapper>
+          {/* Clean up repetition */}
           <ParallaxImage
             src={first}
             alt=""
@@ -57,7 +58,7 @@ export function Shop() {
 }
 
 const ParallaxImage = ({ src, alt, speed = 0.3, scrollYProgress }) => {
-  const y = useTransform(scrollYProgress, [0, 1], [0, speed * 1000]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, speed * 1180]);
 
   return <StyledParallaxImage src={src} alt={alt} style={{ y }} />;
 };
@@ -87,6 +88,6 @@ const StyledParallaxImage = styled(motion.img)`
 `;
 
 const BlankSpace = styled.div`
-  height: 50vh;
+  height: 100vh;
   background: #111;
 `;

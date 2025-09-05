@@ -1,8 +1,6 @@
-import Lenis from "lenis";
 import { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { fetchArtworks } from "./api";
 import { Header } from "./src/components/Header";
 import { Gallery } from "./src/pages/Gallery";
 import { Home } from "./src/pages/Home";
@@ -12,24 +10,33 @@ import { GlobalStyles } from "./src/styles/GlobalStyles";
 import { mainTheme } from "./src/styles/theme";
 
 function App() {
-  useEffect(() => {
-    // Initialize Lenis
-    const lenis = new Lenis({
-      autoRaf: true,
-    });
+  // Problem: scroll stops middle of page in gallery
+  // because content is not fully loaded
+  // useEffect(() => {
+  //   // Initialize Lenis
+  //   const lenis = new Lenis({
+  //     autoRaf: true,
+  //   });
 
-    // Listen for the scroll event and log the event data
-    lenis.on("scroll", (e) => {
-      console.log(e);
-    });
-  }, []);
+  //   // Listen for the scroll event and log the event data
+  //   lenis.on("scroll", (e) => {
+  //     console.log(e);
+  //   });
+  // }, []);
 
+  // Initialize state for artworks
   const [artworks, setArtworks] = useState([]);
 
+  // Fetch artworks from api
   useEffect(() => {
     async function loadData() {
-      const data = await fetchArtworks();
-      setArtworks(data);
+      if (!artworks) {
+        // Call fetchArtworks (api.js) store in data
+        // const data = await fetchArtworks();
+        setArtworks(data);
+      }
+      // Filter out public domain here?
+      // const filteredArtworks = data.filter((art) => art.is_public_domain);
     }
     loadData();
   }, []);

@@ -57,14 +57,30 @@ export function Gallery({ artworks }) {
   const y4 = useTransform(scrollY, (v) => v * 0.1);
   const y5 = useTransform(scrollY, (v) => v * 0.8);
 
+  // Filter public domain artworks
+  const publicDomainArtworks = artworks.filter((art) => art.is_public_domain);
+
+  // Create 5 empty column arrays
+  // const columns = Array.from({ length: 5 }, () => []);
+
+  function createEmptyArray() {
+    return [];
+  }
+
+  const columns = Array.from({ length: 5 }, createEmptyArray);
+
+  // Distribute artworks evenly into columns by index
+  publicDomainArtworks.forEach((artwork, index) => {
+    columns[index % 5].push(artwork);
+  });
+
   return (
-    // avoid repetition
     <GalleryDiv ref={container}>
-      <Column items={artworks} y={y} />
-      <Column items={artworks} y={y2} />
-      <Column items={artworks} y={y3} />
-      <Column items={artworks} y={y4} />
-      <Column items={artworks} y={y5} />
+      <Column items={columns[0]} y={y} />
+      <Column items={columns[1]} y={y2} />
+      <Column items={columns[2]} y={y3} />
+      <Column items={columns[3]} y={y4} />
+      <Column items={columns[4]} y={y5} />
     </GalleryDiv>
   );
 }
@@ -74,7 +90,6 @@ const Column = ({ items, y = 0 }) => {
     <motion.div style={{ y }}>
       {items.map(
         (art) =>
-          art.is_public_domain &&
           art.image_id && (
             <Item key={art.id}>
               <motion.img

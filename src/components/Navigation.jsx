@@ -1,26 +1,24 @@
-import { useTheme } from "@mui/material/styles";
-import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export function Navigation() {
-  const theme = useTheme();
+  const links = [
+    { to: "/", label: "Home" },
+    { to: "/gallery", label: "Gallery" },
+    { to: "/information", label: "Information" },
+    { to: "/shop", label: "Shop" },
+  ];
 
   return (
     <>
-      <LinkWrapper theme={theme}>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/cart">Cart</Link>
-        </li>
-        <li>
-          <Link to="/information">Information</Link>
-        </li>
-        <li>
-          <Link to="/shop">Shop</Link>
-        </li>
+      <LinkWrapper>
+        <ul>
+          {links.map((link) => (
+            <li key={link.to}>
+              <Link to={link.to}>{link.label}</Link>
+            </li>
+          ))}
+        </ul>
       </LinkWrapper>
     </>
   );
@@ -29,21 +27,16 @@ export function Navigation() {
 const LinkWrapper = styled.nav`
   display: flex;
   flex-direction: column;
-  padding: 0.8rem;
   line-height: 0.85;
-  list-style: none;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    // Fixa så detta funkar
+    font-weight: 100;
+  }
 
   a {
-    transition: color 0.4s ease;
-    text-decoration: none;
-
-    font-family: ${({ theme }) => theme.typography.title.fontFamily};
-    font-size: ${({ theme }) => theme.typography.title.fontSize};
-    font-weight: ${({ theme }) => theme.typography.title.fontWeight};
-    color: ${({ theme }) => theme.palette.text.secondary};
-
-    &:hover {
-      color: ${({ theme }) => theme.palette.text.primary};
-    }
+    color: ${({ theme }) => theme.title};
   }
 `;
