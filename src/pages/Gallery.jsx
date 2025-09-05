@@ -3,49 +3,6 @@ import { useRef } from "react";
 import styled from "styled-components";
 
 export function Gallery({ artworks }) {
-  const items = [
-    {
-      imageSrc: "../assets/tree.jpeg",
-      title: "First Item",
-      description: "This is the description for the first item.",
-    },
-    {
-      imageSrc: "../assets/tree.jpeg",
-      title: "First Item",
-      description: "This is the description for the first item.",
-    },
-    {
-      imageSrc: "../assets/tree.jpeg",
-      title: "First Item",
-      description: "This is the description for the first item.",
-    },
-    {
-      imageSrc: "../assets/tree.jpeg",
-      title: "First Item",
-      description: "This is the description for the first item.",
-    },
-    {
-      imageSrc: "../assets/tree.jpeg",
-      title: "First Item",
-      description: "This is the description for the first item.",
-    },
-    {
-      imageSrc: "../assets/tree.jpeg",
-      title: "First Item",
-      description: "This is the description for the first item.",
-    },
-    {
-      imageSrc: "../assets/tree.jpeg",
-      title: "First Item",
-      description: "This is the description for the first item.",
-    },
-    {
-      imageSrc: "../assets/tree.jpeg",
-      title: "First Item",
-      description: "This is the description for the first item.",
-    },
-  ];
-
   const container = useRef(null);
 
   const { scrollY } = useScroll();
@@ -57,20 +14,15 @@ export function Gallery({ artworks }) {
   const y4 = useTransform(scrollY, (v) => v * 0.1);
   const y5 = useTransform(scrollY, (v) => v * 0.8);
 
-  // Filter public domain artworks
-  const publicDomainArtworks = artworks.filter((art) => art.is_public_domain);
-
-  // Create 5 empty column arrays
-  // const columns = Array.from({ length: 5 }, () => []);
-
   function createEmptyArray() {
     return [];
   }
+  // const columns = Array.from({ length: 5 }, () => []);
 
   const columns = Array.from({ length: 5 }, createEmptyArray);
 
   // Distribute artworks evenly into columns by index
-  publicDomainArtworks.forEach((artwork, index) => {
+  artworks.forEach((artwork, index) => {
     columns[index % 5].push(artwork);
   });
 

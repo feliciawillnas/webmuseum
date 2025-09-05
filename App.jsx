@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { fetchArtworks } from "./api";
 import { Header } from "./src/components/Header";
 import { Gallery } from "./src/pages/Gallery";
 import { Home } from "./src/pages/Home";
@@ -28,15 +29,22 @@ function App() {
   const [artworks, setArtworks] = useState([]);
 
   // Fetch artworks from api
+  async function loadFallbackArtworks() {
+    const res = await fetch("./src/data/allArtworks.jsonl");
+    const text = await res.text();
+    return text
+      .trim()
+      .split("\n")
+      .map((line) => JSON.parse(line));
+  }
+
   useEffect(() => {
     async function loadData() {
-      if (!artworks) {
-        // Call fetchArtworks (api.js) store in data
-        // const data = await fetchArtworks();
-        setArtworks(data);
-      }
-      // Filter out public domain here?
-      // const filteredArtworks = data.filter((art) => art.is_public_domain);
+      // Call fetchArtworks (api.js) store in data
+      const data = await fetchArtworks();
+
+      // Filter public domain artworks and store
+      setArtworks(data.filter((art) => art.is_public_domain));
     }
     loadData();
   }, []);
