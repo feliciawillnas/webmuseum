@@ -2,6 +2,14 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 
+/* fonts: 
+    font-family: "Bayon", sans-serif;
+    font-family: "Miss Fajardose", cursive;
+    font-family: "Codystar", sans-serif;
+    font-family: "Astloch", system-ui;
+    font-family: "Overpass", sans-serif; 
+*/
+
 html, body, #root {
     height: auto;
     margin: 0;
@@ -14,7 +22,7 @@ html, body, #root {
 }
 
 body {
-    background-color: ${({ theme }) => theme.body};
+    background-color: ${({ theme }) => theme.background};
 }
 
 /* Typography */
@@ -23,44 +31,25 @@ h1, h2, h3, h4, h5, span, p {
 }
 
 h1 {
-    font-family: "Noto Serif, serif";
-    font-size: 4.2rem;
-    font-weight: 350;
+    font-family: "Codystar", sans-serif;
+    font-size: 4rem;
+    font-weight: 400;
+    font-style: normal;
 
     @media (max-width: 768px) {
 
     }
 }
 
-h2 {
-    font-family: "Noto Serif, serif";
-    color: ${({ theme }) => theme.title};
 
-    @media (max-width: 768px) {
-
-    }
+h3 {
+    font-family: "Astloch", system-ui;
 }
 
-h4 {
-
-    @media (max-width: 768px) {
-
-    }
-}
-
-h6 {
-
-    color: ${({ theme }) => theme.text};
-}
-
-span {
-
-}
 
 p {
-    font-family: "Helvetica Neue, Arial, sans-serif";
-    font-size: 1rem;
-    font-weight: 400;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
 
     @media (max-width: 768px) {
 
@@ -71,8 +60,6 @@ a {
     color: ${({ theme }) => theme.secondary};
     text-decoration: none;
     cursor: pointer;
-    font-family: "Helvetica Neue, Arial, sans-serif";
-    font-size: 5rem;
 }
 
 ul {
@@ -82,6 +69,4 @@ ul {
 li {
     list-style: none;
 }
-
-
 `;

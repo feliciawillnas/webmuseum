@@ -1,5 +1,6 @@
 export const mainTheme = {
-  background: "#F5F5F5",
+  background: "#FDFCF6",
+  // background: "#F0F0F0",
   primary: "#22231E",
   secondary: "#747474",
   text: "#121212",

@@ -13,6 +13,9 @@ export default function GalleryDetail({ artworks }) {
 
   return (
     <Main>
+      <Information>
+        <h3>{art.title}</h3>
+      </Information>
       <ImageWrapper>
         <img
           src={`https://www.artic.edu/iiif/2/${art.image_id}/full/400,/0/default.jpg`}
@@ -20,9 +23,8 @@ export default function GalleryDetail({ artworks }) {
         />
       </ImageWrapper>
       <Information>
-        <h3>{art.title}</h3>
-        {/* <p>{art.place_of_origin}</p> */}
         <p>{art.artist_display}</p>
+        <p>{art.place_of_origin}</p>
         {/* <p>{art.description}</p> */}
       </Information>
     </Main>
@@ -31,14 +33,13 @@ export default function GalleryDetail({ artworks }) {
 
 const Main = styled.main`
   height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  justify-items: center;
 `;
 
 const ImageWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
   img {
     max-width: 400px;
     height: auto;
@@ -46,16 +47,11 @@ const ImageWrapper = styled.div`
 `;
 
 const Information = styled.div`
-  position: absolute;
-  top: 50%;
-  left: calc(50% + 250px);
-  transform: translateY(-50%);
-
   h3 {
     font-size: 2rem;
+    text-align: center;
   }
 
   p {
-    font-family: Arial, Helvetica, sans-serif;
   }
 `;
