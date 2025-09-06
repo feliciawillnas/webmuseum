@@ -18,7 +18,6 @@ export function Gallery({ artworks }) {
   function createEmptyArray() {
     return [];
   }
-  // const columns = Array.from({ length: 5 }, () => []);
 
   const columns = Array.from({ length: 5 }, createEmptyArray);
 
@@ -44,7 +43,12 @@ const Column = ({ items, y = 0 }) => {
       {items.map(
         (art) =>
           art.image_id && (
-            <Item to={`/gallery/${art.id}`} key={art.id}>
+            <Item
+              as={Link}
+              to={`/gallery/${art.id}`}
+              key={art.id}
+              state={{ art }}
+            >
               <motion.img
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9, rotate: 2 }}
@@ -71,11 +75,14 @@ const GalleryDiv = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8rem;
-    align-items: center;
   }
 `;
 
 const Item = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   img {
     width: 50%;
     height: auto;

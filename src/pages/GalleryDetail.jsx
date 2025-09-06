@@ -3,17 +3,22 @@ import { useParams } from "react-router-dom";
 export default function GalleryDetail({ artworks }) {
   const { id } = useParams();
   console.log(id);
-  console.log("id:", id, "type:", typeof id);
-  console.log(
-    "artworks id:",
-    artworks.map((art) => art.id),
-    "type:",
-    typeof artworks.map((art) => art.id)
+
+  const art = artworks.find(
+    (selectedArtwork) => String(selectedArtwork.id) === id
   );
+
+  if (!art) return <p>Artwork not found.</p>;
 
   return (
     <div>
-      <h3>title of artwork</h3>
+      <div>
+        <h1>{art.title}</h1>
+        <img
+          src={`https://www.artic.edu/iiif/2/${art.image_id}/full/800,/0/default.jpg`}
+          alt={art.title}
+        />
+      </div>
     </div>
   );
 }
