@@ -13,40 +13,43 @@ export default function GalleryDetail({ artworks }) {
 
   return (
     <>
-      <ImageWrapper>
-        <img
-          src={`https://www.artic.edu/iiif/2/${art.image_id}/full/400,/0/default.jpg`}
-          alt={art.title}
-        />
-      </ImageWrapper>
-      <InformationWrapper>
-        <h3>{art.title}</h3>
-        <Information>
-          <div>
-            <h5>Artist</h5>
-            <p>{art.artist_display}</p>
-          </div>
+      <Main>
+        <ImageWrapper>
+          <img
+            src={`https://www.artic.edu/iiif/2/${art.image_id}/full/400,/0/default.jpg`}
+            alt={art.title}
+          />
+        </ImageWrapper>
+        <InformationWrapper>
+          <h3>{art.title}</h3>
+          <Information>
+            <div>
+              <h5>Artist</h5>
+              <p>{art.artist_display}</p>
+            </div>
 
-          <div>
-            <h5>Place of origin</h5>
-            <p>{art.place_of_origin}</p>
-          </div>
-          <div>
-            <h5>Medium</h5>
-            <p>{art.medium_display}</p>
-          </div>
-          <div>
-            <h5>Description</h5>
-            <p>{art.description}</p>
-          </div>
-        </Information>
-      </InformationWrapper>
+            <div>
+              <h5>Place of origin</h5>
+              <p>{art.place_of_origin}</p>
+            </div>
+            <div>
+              <h5>Medium</h5>
+              <p>{art.medium_display}</p>
+            </div>
+            <div>
+              <h5>Description</h5>
+              <p>{art.description}</p>
+            </div>
+          </Information>
+        </InformationWrapper>
+      </Main>
     </>
   );
 }
 
-const Test = styled.div`
+const Main = styled.div`
   height: 100vh;
+  overflow-x: scroll;
 `;
 
 const InformationWrapper = styled.div`
