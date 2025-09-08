@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
 */
 
 html, body, #root {
-    height: auto;
+    height: 100%;
     margin: 0;
 }
 
@@ -44,12 +44,22 @@ h1 {
 
 h3 {
     font-family: "Astloch", system-ui;
+    font-size: 35px;
+}
+
+h5 {
+    font-family: 'Courier', Courier, monospace;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 15px;
 }
 
 
 p {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
+    font-family: "Courier", Courier, monospace;
+    font-size: 15px;
+    font-weight: 100;
+    /* line-height: 18px; */
 
     @media (max-width: 768px) {
 
