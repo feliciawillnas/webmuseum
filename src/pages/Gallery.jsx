@@ -51,6 +51,8 @@ const Column = ({ items, y = 0 }) => {
             >
               <motion.img
                 whileHover={{ scale: 1.2 }}
+                initial={{ filter: "blur(80px)" }}
+                whileInView={{ filter: "none", delay: 0.1 }}
                 whileTap={{ scale: 0.9, rotate: 2 }}
                 src={`https://www.artic.edu/iiif/2/${art.image_id}/full/400,/0/default.jpg`}
                 alt={art.title}
