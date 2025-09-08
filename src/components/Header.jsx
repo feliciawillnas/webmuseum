@@ -13,8 +13,9 @@ export function Header() {
   );
 }
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.header`
   display: flex;
+  top: 0;
   justify-content: space-between;
   position: fixed;
   width: 100%;
