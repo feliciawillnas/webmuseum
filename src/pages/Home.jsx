@@ -8,16 +8,43 @@ import collage_three from "../assets/homepage_images/collage_three.jpg";
 import collage_two from "../assets/homepage_images/collage_two.jpg";
 
 export function Home() {
+  const carousel = [
+    {
+      id: 1,
+      imgSrc: collage_one,
+    },
+    {
+      id: 2,
+      imgSrc: collage_two,
+    },
+    {
+      id: 3,
+      imgSrc: collage_three,
+    },
+    {
+      id: 4,
+      imgSrc: collage_four,
+    },
+    {
+      id: 5,
+      imgSrc: collage_five,
+    },
+    {
+      id: 6,
+      imgSrc: collage_six,
+    },
+    {
+      id: 7,
+      imgSrc: collage_seven,
+    },
+  ];
+
   return (
     <>
       <Collage>
-        <img src={collage_one} alt="" />
-        <img src={collage_two} alt="" />
-        <img src={collage_three} alt="" />
-        <img src={collage_four} alt="" />
-        <img src={collage_five} alt="" />
-        <img src={collage_six} alt="" />
-        <img src={collage_seven} alt="" />
+        {carousel.map((item) => (
+          <img key={item.id} src={item.imgSrc} alt={`Collage ${item.id}`} />
+        ))}
       </Collage>
     </>
   );
