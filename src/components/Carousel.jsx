@@ -72,7 +72,8 @@ export default function Carousel() {
   return (
     <>
       <Collage>
-        {carousel.map((item) => (
+        {/* Duplicate carousel mapping */}
+        {[...carousel, ...carousel].map((item) => (
           <img key={item.id} src={item.imgSrc} alt={`Collage ${item.id}`} />
         ))}
       </Collage>
@@ -81,13 +82,12 @@ export default function Carousel() {
 }
 
 const Collage = styled.div`
-  width: 100vw;
   display: flex;
+  flex-direction: row;
+  align-items: baseline;
   position: absolute;
   bottom: 0;
-  align-items: baseline;
-  flex-direction: row;
-
+  width: 100vw;
   overflow-x: scroll;
 
   img {
