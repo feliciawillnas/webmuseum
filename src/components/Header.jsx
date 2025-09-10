@@ -13,15 +13,17 @@ export function Header() {
         onHoverStart={() => setShowHeader(true)}
         onHoverEnd={() => setShowHeader(false)}
       >
-        Hover
+        <h1>Menu</h1>
+        {/* Vad ska vara här */}
       </Hover>
       <AnimatePresence>
+        {/* Stänga direkt när man klickat på en li */}
         {showHeader && (
           <HiddenHeader
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.3 }}
           >
             <HeaderItems
               onHoverStart={() => setShowHeader(true)}

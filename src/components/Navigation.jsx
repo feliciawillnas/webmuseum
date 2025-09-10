@@ -33,7 +33,9 @@ const LinkWrapper = styled.nav`
   }
 
   li {
-    width: fit-content;
+    // Funkar inte som jag vill
+    // Vill shrinkwrap varje li
+    display: inline-block;
   }
 
   a {
