@@ -25,6 +25,8 @@ export function Navigation() {
 }
 
 const LinkWrapper = styled.nav`
+  padding: 1rem;
+
   ul {
     display: flex;
     flex-direction: column;
