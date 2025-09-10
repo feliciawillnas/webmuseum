@@ -1,10 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { Navigation } from "../components/Navigation";
 
 export function Header() {
   const [showHeader, setShowHeader] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setShowHeader(false);
+  }, [location.pathname]);
 
   return (
     <Main>
@@ -17,7 +23,6 @@ export function Header() {
         {/* Vad ska vara här */}
       </Hover>
       <AnimatePresence>
-        {/* Stänga direkt när man klickat på en li */}
         {showHeader && (
           <HiddenHeader
             initial={{ opacity: 0 }}
@@ -53,12 +58,12 @@ const Hover = styled(motion.div)`
 `;
 
 const HiddenHeader = styled(motion.div)`
-  backdrop-filter: blur(10px);
-  height: 100vh;
-  width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(10px);
 `;
 
 const HeaderItems = styled(motion.div)`
