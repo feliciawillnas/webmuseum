@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import collage_eight from "../assets/homepage_images/collage_eight.jpg";
 import collage_eleven from "../assets/homepage_images/collage_eleven.jpg";
@@ -73,8 +74,14 @@ export default function Carousel() {
     <>
       <Collage>
         {/* Duplicate carousel mapping */}
-        {[...carousel, ...carousel].map((item) => (
-          <img key={item.id} src={item.imgSrc} alt={`Collage ${item.id}`} />
+        {[...carousel, ...carousel].map((item, index) => (
+          <motion.img
+            initial={{ filter: "blur(80px)" }}
+            whileInView={{ filter: "none", delay: 0.1 }}
+            key={`${item.id}${index}`}
+            src={item.imgSrc}
+            alt={`Collage ${item.id}`}
+          />
         ))}
       </Collage>
     </>
