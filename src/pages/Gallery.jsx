@@ -11,19 +11,28 @@ export function Gallery({ artworks }) {
   // higher number -> faster scroll
   const y = useTransform(scrollY, (v) => v * 0.2);
   const y2 = useTransform(scrollY, (v) => v * 0.4);
-  const y3 = useTransform(scrollY, (v) => v * 0.6);
+  const y3 = useTransform(scrollY, (v) => v * 0.5);
   const y4 = useTransform(scrollY, (v) => v * 0.1);
-  const y5 = useTransform(scrollY, (v) => v * 0.8);
+  const y5 = useTransform(scrollY, (v) => v * 0.6);
 
+  // function for creating empty array
   function createEmptyArray() {
     return [];
   }
 
   const columns = Array.from({ length: 5 }, createEmptyArray);
 
-  // Distribute artworks evenly into columns by index
+  // distribute artworks evenly into columns by index
   artworks.forEach((artwork, index) => {
-    columns[index % 5].push(artwork);
+    const round = Math.floor(index / 5); // which "round" of distribution
+    const column = index % 5; // which column
+
+    // example: skip columns 1 and 3 on every *other* round
+    if (round % 2 === 1 && (column === 2 || column === 4)) {
+      return; // skip this placement
+    }
+
+    columns[column].push(artwork);
   });
 
   return (
@@ -66,27 +75,24 @@ const Column = ({ items, y = 0 }) => {
 
 const GalleryDiv = styled.div`
   display: flex;
-  justify-items: center;
   flex-direction: row;
-  justify-content: space-between;
-  position: relative;
+  margin-top: 1rem;
   padding: 1rem;
+  justify-content: space-between;
+  justify-items: center;
+  /* position: relative; */
 
   /* Column div */
   div {
     display: flex;
-    flex-direction: column;
     gap: 8rem;
+    flex-direction: column;
   }
 `;
 
 const Item = styled(Link)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   img {
-    width: 50%;
+    width: 10rem;
     height: auto;
     border-radius: 2px;
   }
