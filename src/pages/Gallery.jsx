@@ -7,6 +7,18 @@ import Filter from "../components/Filter";
 export function Gallery({ artworks }) {
   const [currentCategory, setCurrentCategory] = useState(null);
 
+  const categoryArtworks = [];
+
+  if (currentCategory) {
+    artworks.forEach((artwork) => {
+      if (artwork.category_titles[0] === currentCategory) {
+        categoryArtworks.push(artwork);
+        // kan inte sätta artworks för jag skickar artworks till filter
+        // artworks = categoryArtworks;
+      }
+    });
+  }
+
   const container = useRef(null);
 
   const { scrollY } = useScroll();
@@ -72,6 +84,7 @@ const Column = ({ items, y = 0 }) => {
                 src={`https://www.artic.edu/iiif/2/${art.image_id}/full/400,/0/default.jpg`}
                 alt={art.title}
               />
+              {/* <p>{art.title}</p> */}
             </Item>
           )
       )}
