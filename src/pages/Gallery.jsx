@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Filter from "../components/Filter";
 
 export function Gallery({ artworks }) {
   const container = useRef(null);
@@ -36,13 +37,16 @@ export function Gallery({ artworks }) {
   });
 
   return (
-    <GalleryDiv ref={container}>
-      <Column items={columns[0]} y={y} />
-      <Column items={columns[1]} y={y2} />
-      <Column items={columns[2]} y={y3} />
-      <Column items={columns[3]} y={y4} />
-      <Column items={columns[4]} y={y5} />
-    </GalleryDiv>
+    <>
+      <Filter artworks={artworks} />
+      <GalleryDiv ref={container}>
+        <Column items={columns[0]} y={y} />
+        <Column items={columns[1]} y={y2} />
+        <Column items={columns[2]} y={y3} />
+        <Column items={columns[3]} y={y4} />
+        <Column items={columns[4]} y={y5} />
+      </GalleryDiv>
+    </>
   );
 }
 
