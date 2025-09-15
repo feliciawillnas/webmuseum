@@ -1,10 +1,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Filter from "../components/Filter";
 
 export function Gallery({ artworks }) {
+  const [currentCategory, setCurrentCategory] = useState(null);
+
   const container = useRef(null);
 
   const { scrollY } = useScroll();
@@ -38,7 +40,7 @@ export function Gallery({ artworks }) {
 
   return (
     <>
-      <Filter artworks={artworks} />
+      <Filter artworks={artworks} onCategoryChange={setCurrentCategory} />
       <GalleryDiv ref={container}>
         <Column items={columns[0]} y={y} />
         <Column items={columns[1]} y={y2} />

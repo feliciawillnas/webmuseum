@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function Filter({ artworks }) {
+export default function Filter({ artworks, onCategoryChange }) {
   const [showFilters, setShowFilters] = useState(true);
 
   const categories = [];
@@ -23,7 +23,9 @@ export default function Filter({ artworks }) {
         {showFilters && (
           <div>
             {categories.map((category) => (
-              <div>{category}</div>
+              <div key={category} onClick={() => onCategoryChange(category)}>
+                {category}
+              </div>
             ))}
           </div>
         )}
