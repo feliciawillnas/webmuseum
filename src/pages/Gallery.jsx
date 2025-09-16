@@ -17,6 +17,8 @@ export function Gallery({ artworks }) {
         // artworks = categoryArtworks;
       }
     });
+  } else {
+    categoryArtworks.push(...artworks);
   }
 
   const container = useRef(null);
@@ -38,7 +40,7 @@ export function Gallery({ artworks }) {
   const columns = Array.from({ length: 5 }, createEmptyArray);
 
   // distribute artworks evenly into columns by index
-  artworks.forEach((artwork, index) => {
+  categoryArtworks.forEach((artwork, index) => {
     const round = Math.floor(index / 5); // which "round" of distribution
     const column = index % 5; // which column
 
@@ -82,7 +84,7 @@ const Column = ({ items, y = 0 }) => {
                 whileInView={{ filter: "none", delay: 0.1 }}
                 whileTap={{ scale: 0.9, rotate: 2 }}
                 src={`https://www.artic.edu/iiif/2/${art.image_id}/full/400,/0/default.jpg`}
-                alt={art.title}
+                alt={art.alt_text}
               />
               {/* <p>{art.title}</p> */}
             </Item>

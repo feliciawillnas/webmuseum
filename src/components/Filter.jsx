@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function Filter({ artworks, onCategoryChange }) {
-  const [showFilters, setShowFilters] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
 
   const categories = [];
 
@@ -19,15 +19,21 @@ export default function Filter({ artworks, onCategoryChange }) {
   return (
     <>
       <Main>
-        <h3 onClick={() => setShowFilters(true)}>Filter</h3>
+        <h5 onClick={() => setShowFilters((prev) => !prev)}>
+          Filter by category
+        </h5>
         {showFilters && (
-          <div>
+          <ul>
             {categories.map((category) => (
-              <div key={category} onClick={() => onCategoryChange(category)}>
+              <CategoryItem
+                key={category}
+                onClick={() => onCategoryChange(category)}
+              >
                 {category}
-              </div>
+              </CategoryItem>
             ))}
-          </div>
+            <li onClick={() => onCategoryChange(null)}>Clear</li>
+          </ul>
         )}
       </Main>
     </>
@@ -35,7 +41,21 @@ export default function Filter({ artworks, onCategoryChange }) {
 }
 
 const Main = styled.div`
-  height: 10rem;
   padding: 1rem;
-  margin-top: 5rem;
+  margin-top: 1.5rem;
+
+  h5 {
+    cursor: pointer;
+    font-size: 22px;
+  }
+
+  li {
+    font-size: 22px;
+  }
+`;
+
+const CategoryItem = styled.li`
+  margin-left: 1.5rem;
+  font-size: 22px;
+  cursor: pointer;
 `;
