@@ -5,24 +5,24 @@ import styled from "styled-components";
 import Filter from "../components/Filter";
 
 export function Gallery({ artworks }) {
+  // for category filtering
   const [currentCategory, setCurrentCategory] = useState(null);
-
   const categoryArtworks = [];
 
+  // if a category has been chosen
   if (currentCategory) {
+    // go through all artworks and check if each artwork includes chosen category
     artworks.forEach((artwork) => {
-      if (artwork.category_titles[0] === currentCategory) {
+      if (artwork.category_titles.includes(currentCategory)) {
         categoryArtworks.push(artwork);
-        // kan inte sätta artworks för jag skickar artworks till filter
-        // artworks = categoryArtworks;
       }
     });
   } else {
     categoryArtworks.push(...artworks);
   }
 
+  // for parallax scroll
   const container = useRef(null);
-
   const { scrollY } = useScroll();
 
   // higher number -> faster scroll
@@ -44,9 +44,8 @@ export function Gallery({ artworks }) {
     const round = Math.floor(index / 5); // which "round" of distribution
     const column = index % 5; // which column
 
-    // example: skip columns 1 and 3 on every *other* round
     if (round % 2 === 1 && (column === 2 || column === 4)) {
-      return; // skip this placement
+      return;
     }
 
     columns[column].push(artwork);
