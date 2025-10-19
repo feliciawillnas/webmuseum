@@ -5,7 +5,7 @@ export function Navigation() {
   const links = [
     { id: "home", label: "Home", path: "/" },
     { id: "gallery", label: "Gallery", path: "/gallery" },
-    { id: "information", label: "Information", path: "/information" },
+    // { id: "information", label: "Information", path: "/information" },
     { id: "shop", label: "Shop", path: "/shop" },
   ];
 
@@ -15,7 +15,7 @@ export function Navigation() {
         <ul>
           {links.map((link) => (
             <li key={link.id}>
-              <Link to={link.path}>{link.label}</Link>
+              <Link to={link.path}>{link.label}, </Link>
             </li>
           ))}
         </ul>
@@ -29,13 +29,14 @@ const LinkWrapper = styled.nav`
 
   ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 
   li {
     // Funkar inte som jag vill
     // Vill shrinkwrap varje li
     display: inline-block;
+    margin-right: 1rem;
   }
 
   a {

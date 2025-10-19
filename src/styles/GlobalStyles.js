@@ -41,25 +41,28 @@ h1 {
     }
 }
 
-
 h3 {
     font-family: "Astloch", system-ui;
     font-size: 35px;
 }
 
+h4 {
+    font-family: "Codystar", sans-serif;
+    font-size: 15px;
+}
+
 h5 {
     font-family: 'Courier', Courier, monospace;
-    text-transform: uppercase;
-    font-weight: 100;
-    font-size: 15px;
+    /* text-transform: uppercase; */
+    font-weight: 500;
+    font-size: 16px;
 }
 
 
 p {
     font-family: "Courier", Courier, monospace;
-    font-size: 15px;
-    font-weight: 100;
-    /* line-height: 18px; */
+    font-size: 16px;
+    font-weight: 500;
 
     @media (max-width: 768px) {
 
@@ -77,6 +80,7 @@ ul {
 }
 
 li {
+    font-family: 'Courier', Courier, monospace;
     list-style: none;
 }
 `;

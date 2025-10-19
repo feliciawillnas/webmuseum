@@ -63,7 +63,7 @@ const HiddenHeader = styled(motion.div)`
   left: 0;
   height: 100vh;
   width: 100vw;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
 `;
 
 const HeaderItems = styled(motion.div)`

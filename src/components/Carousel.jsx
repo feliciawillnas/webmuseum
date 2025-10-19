@@ -74,7 +74,8 @@ export default function Carousel() {
     <>
       <Collage>
         {/* Duplicate carousel mapping */}
-        {[...carousel, ...carousel].map((item, index) => (
+        {carousel.map((item, index) => (
+          // {[...carousel, ...carousel].map((item, index) => (
           <motion.img
             initial={{ filter: "blur(80px)" }}
             whileInView={{ filter: "none", delay: 0.1 }}

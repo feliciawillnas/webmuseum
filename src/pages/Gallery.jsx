@@ -53,14 +53,16 @@ export function Gallery({ artworks }) {
 
   return (
     <>
-      <Filter artworks={artworks} onCategoryChange={setCurrentCategory} />
-      <GalleryDiv ref={container}>
-        <Column items={columns[0]} y={y} />
-        <Column items={columns[1]} y={y2} />
-        <Column items={columns[2]} y={y3} />
-        <Column items={columns[3]} y={y4} />
-        <Column items={columns[4]} y={y5} />
-      </GalleryDiv>
+      <Main>
+        <Filter artworks={artworks} onCategoryChange={setCurrentCategory} />
+        <GalleryDiv ref={container}>
+          <Column items={columns[0]} y={y} />
+          <Column items={columns[1]} y={y2} />
+          <Column items={columns[2]} y={y3} />
+          <Column items={columns[3]} y={y4} />
+          <Column items={columns[4]} y={y5} />
+        </GalleryDiv>
+      </Main>
     </>
   );
 }
@@ -92,6 +94,10 @@ const Column = ({ items, y = 0 }) => {
     </motion.div>
   );
 };
+
+const Main = styled.main`
+  margin-top: 5rem;
+`;
 
 const GalleryDiv = styled.div`
   display: flex;
