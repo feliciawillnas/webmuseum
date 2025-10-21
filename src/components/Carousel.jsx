@@ -16,76 +16,34 @@ import collage_two from "../assets/homepage_images/collage_two.jpg";
 
 export default function Carousel() {
   const carousel = [
-    {
-      id: 1,
-      imgSrc: collage_one,
-    },
-    {
-      id: 2,
-      imgSrc: collage_two,
-    },
-    {
-      id: 3,
-      imgSrc: collage_three,
-    },
-    {
-      id: 4,
-      imgSrc: collage_four,
-    },
-    {
-      id: 5,
-      imgSrc: collage_five,
-    },
-    {
-      id: 6,
-      imgSrc: collage_six,
-    },
-    {
-      id: 7,
-      imgSrc: collage_seven,
-    },
-    {
-      id: 8,
-      imgSrc: collage_eight,
-    },
-    {
-      id: 9,
-      imgSrc: collage_nine,
-    },
-    {
-      id: 10,
-      imgSrc: collage_ten,
-    },
-    {
-      id: 11,
-      imgSrc: collage_eleven,
-    },
-    {
-      id: 12,
-      imgSrc: collage_twelve,
-    },
-    {
-      id: 13,
-      imgSrc: collage_thirteen,
-    },
+    { id: 1, imgSrc: collage_one },
+    { id: 2, imgSrc: collage_two },
+    { id: 3, imgSrc: collage_three },
+    { id: 4, imgSrc: collage_four },
+    { id: 5, imgSrc: collage_five },
+    { id: 6, imgSrc: collage_six },
+    { id: 7, imgSrc: collage_seven },
+    { id: 8, imgSrc: collage_eight },
+    { id: 9, imgSrc: collage_nine },
+    { id: 10, imgSrc: collage_ten },
+    { id: 11, imgSrc: collage_eleven },
+    { id: 12, imgSrc: collage_twelve },
+    { id: 13, imgSrc: collage_thirteen },
   ];
 
   return (
-    <>
-      <Collage>
-        {/* Duplicate carousel mapping */}
-        {carousel.map((item, index) => (
-          // {[...carousel, ...carousel].map((item, index) => (
+    <Collage>
+      {carousel.map((item, index) => (
+        <ItemWrapper key={`${item.id}${index}`}>
           <motion.img
             initial={{ filter: "blur(80px)" }}
-            whileInView={{ filter: "none", delay: 0.1 }}
-            key={`${item.id}${index}`}
+            whileInView={{ filter: "none", transition: { delay: 0.1 } }}
             src={item.imgSrc}
             alt={`Collage ${item.id}`}
           />
-        ))}
-      </Collage>
-    </>
+        </ItemWrapper>
+      ))}
+    </Collage>
   );
 }
 
@@ -98,9 +56,24 @@ const Collage = styled.div`
   width: 100vw;
   overflow-x: scroll;
 
+  // Hide scrollbar?
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  // Edge
+  -ms-overflow-style: none;
+  // Firefox
+  scrollbar-width: none;
+
   img {
-    width: calc(100% / 7);
-    height: auto;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
   }
+`;
+
+const ItemWrapper = styled.div`
+  flex: 0 0 calc(100% / 7);
+  box-sizing: border-box;
+  padding: 0 2px;
 `;
